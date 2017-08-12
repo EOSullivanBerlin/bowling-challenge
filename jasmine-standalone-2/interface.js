@@ -11,10 +11,10 @@ $(document).ready(function() {
 
 
   $('#roll').on('click', function() {
-    // var pins = player.bowl();
-    var pins = 1;
+    var pins = player.bowl();
+    // var pins = 1;
     bowling.roll(pins);
-    $('#' + bowling.currentRoll.toString()).text(pins);
+    $('#' + bowling.currentRoll.toString()).text(bowling._rolls[bowling.currentRoll - 1]);
     $('#rolls').text(bowling.currentRoll);
   })
 
