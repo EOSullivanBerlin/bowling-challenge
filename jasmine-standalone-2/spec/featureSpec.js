@@ -33,11 +33,15 @@ describe('Bowling Game', function() {
 
     it('if a strike is scored on the 19th roll the player gets one bouns roll', function () {
       rollMany(18, 1);
-      console.log(game.currentRoll)
       rollStrike()
-      console.log(game.currentRoll)
       game.roll(1)
-      console.log(game.currentRoll)
+      game.roll(1)
+      expect(game.currentRoll).toEqual(21);
+    });
+
+    it('if a spare is scored on the last frame roll the player gets one bouns roll', function () {
+      rollMany(18, 1);
+      rollSpare(5)
       game.roll(1)
       expect(game.currentRoll).toEqual(21);
     });

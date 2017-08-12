@@ -3,19 +3,25 @@ $(document).ready(function() {
   var player = new Player;
 
   var isStrike = function(pins) {
-    pins === 10;
+    return pins === 10;
   };
 
 
+
+
+
   $('#roll').on('click', function() {
-    var pins = player.bowl();
+    // var pins = player.bowl();
+    var pins = 1;
     bowling.roll(pins);
-    $('#pinsKnokedDown').text(pins);
+    $('#' + bowling.currentRoll.toString()).text(pins);
     $('#rolls').text(bowling.currentRoll);
   })
 
   $('#result').on('click', function() {
     $('#score').text(bowling.score());
+    event.preventDefault();
+    $( this ).hide( "slow" );
   })
 
 
