@@ -4,8 +4,32 @@ var BowlingGame = function() {
 };
 
 BowlingGame.prototype.roll = function(pins) {
-this._rolls[this.currentRoll] = pins;
-this.currentRoll += 1;
+  var currentRoll = this.currentRoll;
+  var scoreArray = this._rolls;
+  var normalRolls = 20;
+
+  function bounsRolls() {
+    if(currentRoll < normalRolls){
+      return 0
+    } else if (scoreArray[19] === 10){
+      return 2
+    } else if (scoreArray[18] === 10) {
+      return 1
+    } else if ((scoreArray[18] + scoreArray[19]) === 10) {
+      return 1
+    }
+  };
+
+  function isRollLimit() {
+     return currentRoll < (normalRolls + bounsRolls());
+   };
+
+  if(isRollLimit()) {
+    this._rolls[this.currentRoll] = pins;
+    this.currentRoll += 1;
+  } else {
+    return "Game Over!";
+  }
 };
 
 BowlingGame.prototype._rolls = function() {
