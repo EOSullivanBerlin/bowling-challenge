@@ -6,10 +6,6 @@ $(document).ready(function() {
     return pins === 10;
   };
 
-
-
-
-
   $('#roll').on('click', function() {
     var pins = player.bowl();
     // var pins = 1;
